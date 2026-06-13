@@ -17,7 +17,7 @@ AI-powered sentiment analysis dashboard featuring real-time analytics, audience 
 - Chart.js
 
 ## Live Demo
-(Add your deployed GitHub Pages link here)
+https://vidushi2133.github.io/sentiment-analysis-project/
 
 ## Author
 Vidushi Jain
