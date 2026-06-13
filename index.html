@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SentimentPulse — Social Sentiment Intelligence Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><div class="logo">SP</div><div><h1>SentimentPulse</h1><p>Real-time social listening and brand sentiment intelligence</p></div></div>
+      <div class="actions"><div class="pill live"><span class="dot"></span>Live simulation</div><div class="pill">Updated <b id="updated">--:--</b></div><div class="pill">Model confidence <b>92%</b></div></div>
+    </header>
+
+    <section class="hero">
+      <div class="card hero-left">
+        <div class="eyebrow">Market perception command center</div>
+        <h2>Track public mood, viral spikes, and risk signals before they become headlines.</h2>
+        <p class="lead">A realistic dashboard for monitoring social sentiment across X, Reddit, news mentions, and creator conversations. Use it for brands, products, campaigns, finance topics, or crisis monitoring.</p>
+        <div class="searchbox"><input id="topicInput" value="OpenAI" placeholder="Enter keyword, brand, hashtag, product, stock..."/><button class="btn" id="trackBtn">Track Topic</button></div>
+        <div class="chips" id="chips"><button class="chip active">OpenAI</button><button class="chip">Tesla</button><button class="chip">Bitcoin</button><button class="chip">Apple</button><button class="chip">#AI</button><button class="chip">NVIDIA</button></div>
+      </div>
+      <aside class="card hero-right">
+        <div class="health"><div><div class="eyebrow">Current topic</div><h3 id="topicTitle">OpenAI</h3><p class="sub">7,842 mentions analysed today</p></div><span class="badge pos" id="moodBadge">Positive</span></div>
+        <div class="score-ring" id="scoreRing"><div class="score-inner"><div><strong id="netScore">+68</strong><span>Net sentiment</span></div></div></div>
+        <div class="status-list"><div class="status"><span>Primary driver</span><b id="driver">Product launch</b></div><div class="status"><span>Risk level</span><b id="risk">Low</b></div><div class="status"><span>Top channel</span><b>X / Twitter</b></div></div>
+      </aside>
+    </section>
+
+    <section class="kpis">
+      <div class="card kpi"><span>Total mentions</span><strong id="mentions">7,842</strong><small class="up">▲ 18.4% vs yesterday</small></div>
+      <div class="card kpi"><span>Positive</span><strong class="up" id="positive">61%</strong><small>4,784 positive posts</small></div>
+      <div class="card kpi"><span>Neutral</span><strong id="neutral">27%</strong><small>2,117 informational posts</small></div>
+      <div class="card kpi"><span>Negative</span><strong class="down" id="negative">12%</strong><small>941 risk mentions</small></div>
+      <div class="card kpi"><span>Engagement</span><strong id="engagement">1.8M</strong><small class="flat">▲ 6.2% reach velocity</small></div>
+    </section>
+
+    <section class="grid">
+      <div class="card panel">
+        <div class="panel-head"><div><h3>Sentiment trend by hour</h3><p class="sub">Positive, neutral, and negative share across the last 24 hours</p></div><span class="badge neu">Live</span></div>
+        <div class="canvas-wrap"><canvas id="trendChart"></canvas></div>
+      </div>
+      <div class="side-grid">
+        <div class="card panel">
+          <div class="panel-head"><div><h3>Share by source</h3><p class="sub">Where the conversation is happening</p></div></div>
+          <div class="canvas-wrap small"><canvas id="sourceChart"></canvas></div>
+        </div>
+        <div class="card panel">
+          <div class="panel-head"><div><h3>Trending themes</h3><p class="sub">Detected from high-engagement posts</p></div></div>
+          <div class="topics" id="themes"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top:18px">
+      <div class="card panel">
+        <div class="panel-head"><div><h3>High-impact mention feed</h3><p class="sub">Realistic sample posts with AI-assigned sentiment labels</p></div><span class="badge pos" id="feedCount">24 new</span></div>
+        <div class="feed" id="feed"></div>
+      </div>
+      <div class="card panel">
+        <div class="panel-head"><div><h3>Alert center</h3><p class="sub">Signals that need attention</p></div></div>
+        <div class="topics" id="alerts"></div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="card insight"><h4>Audience trust index</h4><p>Trust is trending upward because positive posts are receiving higher engagement than negative mentions.</p><div class="bar"><i class="green" style="width:76%"></i></div></div>
+      <div class="card insight"><h4>Crisis probability</h4><p>Current negative sentiment remains below the warning threshold, but support-related terms should be monitored.</p><div class="bar"><i class="red" style="width:22%"></i></div></div>
+      <div class="card insight"><h4>Virality potential</h4><p>The topic has strong repost velocity and a rising creator discussion share in the last two hours.</p><div class="bar"><i class="blue" style="width:68%"></i></div></div>
+    </section>
+  </main>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
